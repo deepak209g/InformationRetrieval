@@ -19,24 +19,26 @@ public class Driver {
 //		engine.insert("abcd", "second");
 //		engine.insert("abcdef", "second");
 //		engine.Query("abcdef abc");
-		
-		
-		traverse("D:\\DC Downloads\\Reuters21578-Apte-90Cat\\training", engine);
-		Scanner in = new Scanner(System.in);
-		while(true){
-			System.out.println("Enter q to query e to exit");
-			String s = in.next();
-			if(s.equals("q")){
-				System.out.println("Enter query");
-				String query = in.next();
-				query = query.toLowerCase();
-				query = query.replaceAll("[^a-zA-Z]","");
-				engine.Query(query);
-			}else if(s.equals("e")){
-				in.close();
-				break;
-			}
+		if(args.length > 0){
+			traverse(args[0], engine);
+			Scanner in = new Scanner(System.in);
+			while(true){
+				System.out.println("Enter q to query e to exit");
+				String s = in.next();
+				if(s.equals("q")){
+					System.out.println("Enter query");
+					String query = in.next();
+					query = query.toLowerCase();
+					query = query.replaceAll("[^a-zA-Z]","");
+					engine.Query(query);
+				}else if(s.equals("e")){
+					in.close();
+					break;
+				}
+			}	
 		}
+		
+		
 	}
 	
 	public static void traverse(String file, Trie t){
